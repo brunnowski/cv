@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Brunno Rossetti - Currículo</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    * {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    }
+    .negative-filter {
+      filter: invert(1) hue-rotate(180deg);
+    }
+    .negative-filter .photo-container img {
+      filter: invert(1) hue-rotate(180deg);
+    }
+    .photo-container {
+      width: 160px;
+      height: 160px;
+      border-radius: 50%;
+      overflow: hidden;
+      margin: 0 auto 24px;
+      border: 3px solid #000;
+      background: #f5f5f5;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+    }
+    .photo-container img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .photo-placeholder {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #666;
+      font-size: 11px;
+      text-align: center;
+      padding: 10px;
+    }
+    .divider {
+      border: none;
+      height: 1px;
+      background: #000;
+      margin: 24px 0;
+    }
+    .section-title {
+      font-size: 14px;
+      font-weight: 600;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      margin-bottom: 16px;
+      color: #000;
+    }
+    .section-title-dark {
+      color: #fff;
+    }
+    .bullet-point {
+      position: relative;
+      padding-left: 20px;
+    }
+    .bullet-point::before {
+      content: "•";
+      position: absolute;
+      left: 0;
+      color: #000;
+      font-weight: bold;
+    }
+    .bullet-point-dark::before {
+      color: #fff;
+    }
+    .lang-button-container {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      z-index: 1000;
+    }
+    input[type="file"] {
+      display: none;
+    }
+    .photo-upload-label {
+      cursor: pointer;
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+      opacity: 0;
+      transition: opacity 0.3s;
+    }
+    .photo-container:hover .photo-upload-label {
+      opacity: 1;
+      background: rgba(0, 0, 0, 0.7);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-size: 11px;
+      text-align: center;
+    }
+    @media print {
+      * {
+        -webkit-print-color-adjust: exact !important;
+        print-color-adjust: exact !important;
+      }
+      body {
+        background: white !important;
+        margin: 0;
+        padding: 0;
+      }
+      .no-print {
+        display: none !important;
+      }
+      #app {
+        filter: none !important;
+        background: white !important;
+      }
+      .max-w-5xl {
+        max-width: 100% !important;
+        margin: 0 !important;
+        padding: 0 !important;
+      }
+      .shadow-lg, .shadow-2xl {
+        box-shadow: none !important;
+      }
+      .rounded-3xl, .rounded {
+        border-radius: 0 !important;
+      }
+      .border {
+        border-color: #000 !important;
+      }
+      .photo-container {
+        border-color: #000 !important;
+        box-shadow: none !important;
+      }
+      .photo-container img {
+        filter: none !important;
+        -webkit-filter: none !important;
+      }
+      .negative-filter .photo-container img {
+        filter: none !important;
+        -webkit-filter: none !important;
+      }
+      aside {
+        background: #000 !important;
+        -webkit-print-color-adjust: exact !important;
+        print-color-adjust: exact !important;
+      }
+      aside * {
+        color: #fff !important;
+      }
+      main {
+        background: #fff !important;
+      }
+      .divider {
+        background: #000 !important;
+        opacity: 1 !important;
+      }
+      .divider[style*="background: #fff"] {
+        background: #fff !important;
+        opacity: 0.3 !important;
+      }
+      @page {
+        margin: 0.5cm;
+        size: A4;
+      }
+      .space-y-8 > * + * {
+        margin-top: 1.5rem !important;
+      }
+      .space-y-6 > * + * {
+        margin-top: 1rem !important;
+      }
+      .space-y-2 > * + * {
+        margin-top: 0.25rem !important;
+      }
+    }
+  </style>
+</head>
+<body class="bg-white">
+  <div id="app" class="min-h-screen antialiased">
+    <!-- Botão de Idioma no Topo Direito -->
+    <div class="lang-button-container no-print">
+      <button 
+        id="langToggle" 
+        onclick="toggleLanguage()" 
+        class="bg-black text-white px-5 py-2.5 rounded font-semibold text-sm hover:bg-gray-800 transition-colors shadow-lg"
+        title="Alternar idioma / Toggle language"
+        style="display: block !important;"
+      >
+        <span id="langText">EN</span>
+      </button>
+    </div>
+
+    <div class="max-w-5xl mx-auto px-6 pb-12">
+      <div class="bg-white shadow-lg border border-gray-300 overflow-hidden">
+        <div class="md:flex">
+          <!-- Sidebar -->
+          <aside class="md:w-2/5 bg-black text-white p-10">
+            <div class="mb-8">
+              <!-- Container da Foto -->
+              <!-- 
+                PARA ADICIONAR SUA FOTO DIRETAMENTE NO CÓDIGO:
+                1. Coloque sua imagem na mesma pasta deste arquivo HTML
+                2. Substitua "SUA_FOTO.jpg" abaixo pelo nome do seu arquivo de imagem
+                3. Exemplos: "foto.jpg", "brunno.png", "profile.jpeg"
+              -->
+              <div class="photo-container" style="position: relative;">
+                <img id="profilePhoto" src="Foto CV.jpg" alt="Brunno Rossetti" style="display: none;" onload="this.style.display='block'; document.getElementById('photoPlaceholder').style.display='none';" onerror="this.style.display='none'; document.getElementById('photoPlaceholder').style.display='flex';">
+                <div id="photoPlaceholder" class="photo-placeholder" style="display: flex;">
+                  Clique para adicionar foto
+                </div>
+                <input type="file" id="photoInput" accept="image/*" onchange="handlePhotoUpload(event)">
+                <label for="photoInput" class="photo-upload-label">
+                  Clique para alterar
+                </label>
+              </div>
+              
+              <h1 class="text-3xl font-bold text-center mb-2" data-pt="Brunno Rossetti" data-en="Brunno Rossetti">Brunno Rossetti</h1>
+              <div class="text-center text-sm space-y-1">
+                <p data-pt="Florianópolis, Brasil" data-en="Florianópolis, Brazil">Florianópolis, Brasil</p>
+                <p>+55 48 98864-6755</p>
+                <p class="break-words">rossettibrunno@gmail.com</p>
+              </div>
+            </div>
+
+            <hr class="divider" style="background: #fff; opacity: 0.3;">
+
+            <div class="space-y-6 text-sm">
+              <div>
+                <h3 class="section-title section-title-dark mb-3" data-pt="Competências" data-en="Skills">Competências</h3>
+                <ul class="space-y-2 text-xs leading-relaxed">
+                  <li data-pt="Curadoria e descoberta de talentos" data-en="Talent curation and discovery">Curadoria e descoberta de talentos</li>
+                  <li data-pt="Desenvolvimento artístico e branding musical" data-en="Artist development and music branding">Desenvolvimento artístico e branding musical</li>
+                  <li data-pt="Produção e direção criativa" data-en="Production and creative direction">Produção e direção criativa</li>
+                  <li data-pt="Gestão de projetos e estratégias de lançamento" data-en="Project management and launch strategies">Gestão de projetos e estratégias de lançamento</li>
+                  <li data-pt="Planejamento e negociação" data-en="Planning and negotiation">Planejamento e negociação</li>
+                  <li data-pt="Análise de tendências e comportamento do público" data-en="Trend analysis and audience behavior">Análise de tendências e comportamento do público</li>
+                  <li data-pt="Liderança e mentoria de equipes" data-en="Leadership and team mentoring">Liderança e mentoria de equipes</li>
+                </ul>
+              </div>
+
+              <hr class="divider" style="background: #fff; opacity: 0.3;">
+
+              <div>
+                <h3 class="section-title section-title-dark mb-3" data-pt="Idiomas" data-en="Languages">Idiomas</h3>
+                <p class="text-xs leading-relaxed" data-pt="Português (nativo) | Inglês (fluente) | Espanhol (intermediário) | Italiano (intermediário) | Grego (básico)" data-en="Portuguese (native) | English (fluent) | Spanish (intermediate) | Italian (intermediate) | Greek (basic)">Português (nativo) | Inglês (fluente) | Espanhol (intermediário) | Italiano (intermediário) | Grego (básico)</p>
+              </div>
+
+              <div class="pt-4 no-print">
+                <button onclick="window.print()" class="w-full bg-white text-black py-2.5 rounded font-semibold hover:bg-gray-100 transition-colors text-sm border border-black" data-pt="Imprimir / Exportar PDF" data-en="Print / Export PDF">Imprimir / Exportar PDF</button>
+              </div>
+            </div>
+          </aside>
+
+          <!-- Main Content -->
+          <main class="md:flex-1 p-10 bg-white">
+            <!-- Sobre Mim -->
+            <section class="mb-10">
+              <h2 class="section-title" data-pt="Sobre Mim" data-en="About Me">Sobre Mim</h2>
+              <div class="text-sm leading-relaxed text-gray-900 space-y-3">
+                <p data-pt="Sou movido por música, pessoas e propósito. Tenho mais de 15 anos de experiência em criação e gestão de projetos musicais e audiovisuais, unindo sensibilidade artística e visão estratégica. Minha trajetória combina o olhar criativo de quem vive a música e a capacidade de estruturar processos que transformam ideias em resultados. Com escuta apurada, empatia e senso de timing, atuo conectando artistas, público e marcas de forma genuína e relevante." data-en="I am driven by music, people, and purpose. With over 15 years of experience in creating and managing musical and audiovisual projects, I combine artistic sensitivity and strategic vision. My journey combines the creative perspective of someone who lives music and the ability to structure processes that transform ideas into results. With refined listening, empathy, and a sense of timing, I work connecting artists, audiences, and brands in an authentic and relevant way.">Sou movido por música, pessoas e propósito. Tenho mais de 15 anos de experiência em criação e gestão de projetos musicais e audiovisuais, unindo sensibilidade artística e visão estratégica. Minha trajetória combina o olhar criativo de quem vive a música e a capacidade de estruturar processos que transformam ideias em resultados. Com escuta apurada, empatia e senso de timing, atuo conectando artistas, público e marcas de forma genuína e relevante.</p>
+              </div>
+            </section>
+
+            <hr class="divider">
+
+            <!-- Experiência Profissional -->
+            <section class="mb-10">
+              <h2 class="section-title" data-pt="Experiência Profissional" data-en="Professional Experience">Experiência Profissional</h2>
+
+              <div class="space-y-8">
+                <article>
+                  <h3 class="font-semibold text-base mb-1" data-pt="Co-fundador / Head de Operações no Brasil — Songsay (Estocolmo)" data-en="Co-founder / Head of Operations in Brazil — Songsay (Stockholm)">Co-fundador / Head de Operações no Brasil — Songsay (Estocolmo)</h3>
+                  <p class="text-sm text-gray-600 mb-3">jan 2022 – set 2024</p>
+                  <p class="text-sm text-gray-900" data-pt="Co-fundador de startup que conecta artistas e fãs por meio de tecnologia e storytelling. Responsável pela liderança de times multidisciplinares (tecnologia, marketing e conteúdo) e pela curadoria de talentos brasileiros. Atuação em planejamento criativo, parcerias estratégicas e análise de dados para decisões de posicionamento artístico." data-en="Co-founder of startup that connects artists and fans through technology and storytelling. Responsible for leading multidisciplinary teams (technology, marketing, and content) and curating Brazilian talent. Work in creative planning, strategic partnerships, and data analysis for artistic positioning decisions.">Co-fundador de startup que conecta artistas e fãs por meio de tecnologia e storytelling. Responsável pela liderança de times multidisciplinares (tecnologia, marketing e conteúdo) e pela curadoria de talentos brasileiros. Atuação em planejamento criativo, parcerias estratégicas e análise de dados para decisões de posicionamento artístico.</p>
+                </article>
+
+                <article>
+                  <h3 class="font-semibold text-base mb-1" data-pt="Co-fundador e Produtor — We Design Sound (Estúdio de Produção)" data-en="Co-founder and Producer — We Design Sound (Production Studio)">Co-fundador e Produtor — We Design Sound (Estúdio de Produção)</h3>
+                  <p class="text-sm text-gray-600 mb-3">jan 2019 – jan 2024</p>
+                  <p class="text-sm text-gray-900" data-pt="Criação de trilhas, sound design e produção musical para filmes, séries e campanhas. Direção artística e orientação de performance em estúdio, integrando visão criativa e excelência técnica. Participação em projetos reconhecidos internacionalmente." data-en="Creation of soundtracks, sound design, and music production for films, series, and campaigns. Artistic direction and performance guidance in studio, integrating creative vision and technical excellence. Participation in internationally recognized projects.">Criação de trilhas, sound design e produção musical para filmes, séries e campanhas. Direção artística e orientação de performance em estúdio, integrando visão criativa e excelência técnica. Participação em projetos reconhecidos internacionalmente.</p>
+                </article>
+
+                <article>
+                  <h3 class="font-semibold text-base mb-1" data-pt="Engenheiro de Áudio — Universidade Federal de Santa Catarina (UFSC)" data-en="Audio Engineer — Federal University of Santa Catarina (UFSC)">Engenheiro de Áudio — Universidade Federal de Santa Catarina (UFSC)</h3>
+                  <p class="text-sm text-gray-600 mb-3">jun 2019 – jul 2023</p>
+                  <p class="text-sm text-gray-900" data-pt="Coordenação técnica e artística de eventos musicais e culturais. Suporte a artistas e grupos independentes em gravações, performances e projetos de extensão." data-en="Technical and artistic coordination of musical and cultural events. Support for artists and independent groups in recordings, performances, and extension projects.">Coordenação técnica e artística de eventos musicais e culturais. Suporte a artistas e grupos independentes em gravações, performances e projetos de extensão.</p>
+                </article>
+
+                <article>
+                  <h3 class="font-semibold text-base mb-1" data-pt="Professor Técnico — SENAC São Paulo" data-en="Technical Instructor — SENAC São Paulo">Professor Técnico — SENAC São Paulo</h3>
+                  <p class="text-sm text-gray-600 mb-3">jan 2014 – jun 2019</p>
+                  <p class="text-sm text-gray-900" data-pt="Criação e aplicação de cursos técnicos em áudio e produção musical para mais de 2.000 alunos por ano. Desenvolvimento de metodologia prática e incentivo à autonomia criativa." data-en="Creation and delivery of technical courses in audio and music production for over 2,000 students per year. Development of practical methodology and encouragement of creative autonomy.">Criação e aplicação de cursos técnicos em áudio e produção musical para mais de 2.000 alunos por ano. Desenvolvimento de metodologia prática e incentivo à autonomia criativa.</p>
+                </article>
+
+                <article>
+                  <h3 class="font-semibold text-base mb-1" data-pt="Engenheiro de Áudio — SESC São Paulo" data-en="Audio Engineer — SESC São Paulo">Engenheiro de Áudio — SESC São Paulo</h3>
+                  <p class="text-sm text-gray-600 mb-3">2012 – 2014</p>
+                  <p class="text-sm text-gray-900" data-pt="Operação de som em shows e espetáculos, com foco em qualidade sonora, performance e experiência do público." data-en="Sound operation for shows and performances, focusing on sound quality, performance, and audience experience.">Operação de som em shows e espetáculos, com foco em qualidade sonora, performance e experiência do público.</p>
+                </article>
+
+                <article>
+                  <h3 class="font-semibold text-base mb-1" data-pt="Músico e Compositor Independente" data-en="Independent Musician and Composer">Músico e Compositor Independente</h3>
+                  <p class="text-sm text-gray-600 mb-3" data-pt="2005 – presente" data-en="2005 – present">2005 – presente</p>
+                  <p class="text-sm text-gray-900" data-pt="Mais de 20 anos de experiência como músico, compositor e colaborador em projetos autorais e coletivos. Vivência com diferentes estilos e culturas musicais." data-en="Over 20 years of experience as musician, composer, and collaborator in original and collective projects. Experience with different styles and musical cultures.">Mais de 20 anos de experiência como músico, compositor e colaborador em projetos autorais e coletivos. Vivência com diferentes estilos e culturas musicais.</p>
+                </article>
+              </div>
+            </section>
+
+            <hr class="divider">
+
+            <!-- Formação Acadêmica -->
+            <section class="mb-10">
+              <h2 class="section-title" data-pt="Formação Acadêmica" data-en="Academic Background">Formação Acadêmica</h2>
+              <div class="space-y-2 text-sm text-gray-900">
+                <p class="bullet-point" data-pt="Mestrado em Música — UDESC (2019–2021)" data-en="Master's in Music — UDESC (2019–2021)">Mestrado em Música — UDESC (2019–2021)</p>
+                <p class="bullet-point" data-pt="Pós-Graduação em Produção Cinematográfica — SENAC (2015–2017)" data-en="Postgraduate in Cinematographic Production — SENAC (2015–2017)">Pós-Graduação em Produção Cinematográfica — SENAC (2015–2017)</p>
+                <p class="bullet-point" data-pt="Produção de Mídia — FAAM (2013–2015)" data-en="Media Production — FAAM (2013–2015)">Produção de Mídia — FAAM (2013–2015)</p>
+                <p class="bullet-point" data-pt="Produção Musical — Anhembi Morumbi (2012–2014)" data-en="Music Production — Anhembi Morumbi (2012–2014)">Produção Musical — Anhembi Morumbi (2012–2014)</p>
+                <p class="bullet-point" data-pt="Engenharia de Áudio — IAV (2008–2011)" data-en="Audio Engineering — IAV (2008–2011)">Engenharia de Áudio — IAV (2008–2011)</p>
+              </div>
+            </section>
+
+            <hr class="divider">
+
+            <!-- Visão e Propósito -->
+            <section class="mb-6">
+              <h2 class="section-title" data-pt="Visão e Propósito" data-en="Vision and Purpose">Visão e Propósito</h2>
+              <p class="text-sm leading-relaxed text-gray-900" data-pt="Minha trajetória é guiada pela combinação entre sensibilidade criativa e estratégia. Acredito em projetos que unem autenticidade, colaboração e propósito — transformando experiências artísticas em conexões reais e duradouras." data-en="My journey is guided by the combination of creative sensitivity and strategy. I believe in projects that unite authenticity, collaboration, and purpose — transforming artistic experiences into real and lasting connections.">Minha trajetória é guiada pela combinação entre sensibilidade criativa e estratégia. Acredito em projetos que unem autenticidade, colaboração e propósito — transformando experiências artísticas em conexões reais e duradouras.</p>
+            </section>
+          </main>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    let currentLang = 'pt';
+
+    function toggleLanguage() {
+      currentLang = currentLang === 'pt' ? 'en' : 'pt';
+      const langText = document.getElementById('langText');
+      langText.textContent = currentLang === 'pt' ? 'EN' : 'PT';
+      
+      // Atualizar todos os textos
+      const elements = document.querySelectorAll('[data-pt][data-en]');
+      elements.forEach(el => {
+        el.textContent = el.getAttribute(`data-${currentLang}`);
+      });
+
+      // Aplicar/remover filtro de cores negativas quando em inglês
+      const app = document.getElementById('app');
+      if (currentLang === 'en') {
+        app.classList.add('negative-filter');
+      } else {
+        app.classList.remove('negative-filter');
+      }
+    }
+
+    // Função para fazer upload da foto
+    function handlePhotoUpload(event) {
+      const file = event.target.files[0];
+      if (file) {
+        const reader = new FileReader();
+        reader.onload = function(e) {
+          const photo = document.getElementById('profilePhoto');
+          const placeholder = document.getElementById('photoPlaceholder');
+          photo.src = e.target.result;
+          photo.style.display = 'block';
+          placeholder.style.display = 'none';
+          // Salvar no localStorage para persistir entre sessões
+          localStorage.setItem('profilePhoto', e.target.result);
+        };
+        reader.readAsDataURL(file);
+      }
+    }
+
+    // Permitir clicar no container da foto para abrir o seletor de arquivo
+    document.addEventListener('DOMContentLoaded', function() {
+      const photoContainer = document.querySelector('.photo-container');
+      const photoInput = document.getElementById('photoInput');
+      
+      if (photoContainer && photoInput) {
+        photoContainer.addEventListener('click', function(e) {
+          if (e.target !== photoInput && e.target.tagName !== 'LABEL') {
+            photoInput.click();
+          }
+        });
+      }
+
+      // Tentar carregar imagem automaticamente se existir
+      const photo = document.getElementById('profilePhoto');
+      const placeholder = document.getElementById('photoPlaceholder');
+      
+      // Verificar se a imagem já tem um src definido no HTML
+      if (photo.src && photo.src !== window.location.href && photo.src !== '') {
+        const testImg = new Image();
+        testImg.onload = function() {
+          photo.style.display = 'block';
+          placeholder.style.display = 'none';
+        };
+        testImg.onerror = function() {
+          photo.style.display = 'none';
+          placeholder.style.display = 'flex';
+        };
+        testImg.src = photo.src;
+      } else {
+        // Tentar carregar imagem do localStorage
+        const savedPhoto = localStorage.getItem('profilePhoto');
+        if (savedPhoto) {
+          photo.src = savedPhoto;
+          photo.style.display = 'block';
+          placeholder.style.display = 'none';
+        } else {
+          // Se não houver imagem, mostrar placeholder
+          photo.style.display = 'none';
+          placeholder.style.display = 'flex';
+        }
+      }
+    });
+  </script>
+</body>
+</html>
